@@ -1,5 +1,5 @@
 public interface IAttaque {
-    public int LancerAttaque();
+    public int lancerAttaque();
 
     // Getters et Setters
     public String getNom();

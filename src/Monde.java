@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -48,7 +50,8 @@ public class Monde {
      */
     public static Personnage PersonnageFactory() {
         //Nouveau Personnage
-        Personnage p = new Personnage("", 0, 0);
+        Personnage p = new Personnage("", 0, 0, classeFactory());
+        System.out.println("Création d'un personnage ---------");
 
         // Vérifie que le nom n'est pas égal à rien
         while(p.getNom().equals("")) {
@@ -75,6 +78,38 @@ public class Monde {
     public static Monstre MonstreFactory() {
         Monstre m = new Monstre(genererNom(), 5, 50);
         return m;
+    }
+
+    /**
+     * Cette méthode créer et retourne une BasicAttaque
+     * @return
+     */
+    public static BasicAttaque basicAttaqueFactory() {
+        System.out.println("Création d'un attaque ---------");
+        BasicAttaque a = new BasicAttaque("", "Ceci est une attaque", 10, 50);
+        System.out.println("Nom :");
+        a.setNom(scanner.next());
+        return a;
+    }
+
+    /**
+     * Cette méthode créer et retourne une classe
+     * @return
+     */
+    public static Classe classeFactory() {
+        System.out.println("Création d'une classe ----------");
+        Classe c = new Classe();
+        System.out.println("Nom :");
+        c.setNom(scanner.next());
+
+        // Création d'une liste d'attaque pour la classe
+        List<IAttaque> attaques = new ArrayList<>();
+        attaques.add(basicAttaqueFactory());
+        attaques.add(basicAttaqueFactory());
+
+        c.setAttaques(attaques);
+
+        return c;
     }
 
     /**

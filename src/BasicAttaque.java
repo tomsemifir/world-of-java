@@ -14,7 +14,7 @@ public class BasicAttaque implements IAttaque{
         this.nom = nom;
         this.description = description;
         this.degats = degats;
-        this.chanceToucher = chanceToucher; // = 90
+        this.chanceToucher = chanceToucher;
     }
 
     /**
@@ -23,7 +23,7 @@ public class BasicAttaque implements IAttaque{
      * Sinon affiche une erreur et retourn 0
      * @return
      */
-    public int LancerAttaque() {
+    public int lancerAttaque() {
         Random random = new Random();
         // Génère un nombre aléatoire à virgule entre 0 et 100
         double nbr = random.nextDouble() * 100;
