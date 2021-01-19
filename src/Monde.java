@@ -10,7 +10,7 @@ public class Monde {
      * @param personnage
      * @param monstre
      */
-    public static void combat(Personnage personnage, Monstre monstre) {
+    public static void combat(ICombattant personnage, ICombattant monstre) {
         int tour = 1;
         boolean isTurn = true;
 
@@ -34,7 +34,7 @@ public class Monde {
      * @param personnage
      * @param monstre
      */
-    public static void quiGagne(Personnage personnage, Monstre monstre) {
+    public static void quiGagne(ICombattant personnage, ICombattant monstre) {
         if (personnage.getPointDeVie() > 0) {
             System.out.println(personnage.getNom() + " a gagné !");
         } else {
