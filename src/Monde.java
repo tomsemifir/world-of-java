@@ -4,6 +4,8 @@ public class Monde {
 
 
     private static Map<String, Classe> classes = initClasses();
+    private static Groupe monstres = new Groupe();
+    private static Groupe personnages = new Groupe();
 
     private static Scanner scanner = new Scanner(System.in);
 
@@ -13,7 +15,7 @@ public class Monde {
      * @param personnage
      * @param monstre
      */
-    public static void combat(ICombattant personnage, ICombattant monstre) {
+    public static void combat1v1(ICombattant personnage, ICombattant monstre) {
         int tour = 1;
         boolean isTurn = true;
 
@@ -30,6 +32,31 @@ public class Monde {
         }
 
         quiGagne(personnage, monstre);
+    }
+
+    /**
+     * Cette méthode quit fait combattre à tour de rôle le groupe de personnages et le groupe de monstres
+     * @param personnages
+     * @param monstres
+     */
+    public static void combatGvsG(Groupe personnages, Groupe monstres) {
+        int tour = 1;
+
+        while (!personnages.estMort() && !monstres.estMort()) {
+            System.out.println("------- TOUR " + tour + " -------");
+            if(tour % 2 != 0) {
+                personnages.attaquer(monstres);
+            } else {
+                monstres.attaquer(personnages);
+            }
+            tour++;
+        }
+
+        if(personnages.estMort()) {
+            System.out.println("Les monstres ont gagné !");
+        } else {
+            System.out.println("Les personnages ont gagné !");
+        }
     }
 
     /**
@@ -85,6 +112,32 @@ public class Monde {
     public static Monstre monstreFactory() {
         Monstre m = new Monstre(genererNom(), 5, 50);
         return m;
+    }
+
+    /**
+     * Cette méthode créer et retourne un groupe de monstres selon le nombre de monstres souhaités
+     * @param nbrMonstre
+     * @return
+     */
+    public static Groupe groupeMonstreFactory(int nbrMonstre) {
+        Groupe monstres = new Groupe();
+        for (int i =0; i < nbrMonstre; i++) {
+            monstres.addCombattant(monstreFactory());
+        }
+        return monstres;
+    }
+
+    /**
+     * Cette méthode créer et retourne un groupe de personnages selon le nombre de personnages souhaités
+     * @param nbrPersonnage
+     * @return
+     */
+    public static Groupe groupePersonnageFactory(int nbrPersonnage) {
+        Groupe personnages = new Groupe();
+        for (int i = 0; i < nbrPersonnage; i++) {
+            personnages.addCombattant(personnageFactory());
+        }
+        return personnages;
     }
 
     /**

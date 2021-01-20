@@ -16,7 +16,24 @@ public abstract class AbstractCombattant implements ICombattant {
     public void attaquer(ICombattant adversaire) {
         System.out.println(this.getNom() + " attaque " + adversaire.getNom() + " et lui inflige " + this.getDegats() + " points de dégats");
         adversaire.defendre(this.getDegats());
-        System.out.println("Il reste à " + adversaire.getNom() + " : " + adversaire.getPointDeVie() + " pdv");
+        if(adversaire.estMort()) {
+            System.out.println(adversaire.getNom() + " est mort !");
+        }else {
+            System.out.println("Il reste à " + adversaire.getNom() + " : " + adversaire.getPointDeVie() + " pdv");
+        }
+    }
+
+    @Override
+    public boolean estMort() {
+        return this.getPointDeVie() > 0 ? false : true;
+        /*
+        Equivalant à :
+        if (this.getPointDeVie() > 0) {
+            return false;
+        } else {
+            return true;
+        }
+         */
     }
 
     public void defendre(int degats) {

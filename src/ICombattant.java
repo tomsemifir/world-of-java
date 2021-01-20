@@ -11,6 +11,14 @@ public interface ICombattant {
      */
     public void defendre(int degats);
 
+    /**
+     * Cette méthode vérifie que le combattant est mort
+     * Si il est vivant : retourne "false"
+     * Si il est mort : retourne "true"
+     * @return
+     */
+    public boolean estMort();
+
     // Getters et Setters
     public String getNom();
     public int getDegats();

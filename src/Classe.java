@@ -32,7 +32,9 @@ public class Classe {
      */
     public IAttaque getAttaque() {
         Random random = new Random();
-        return this.attaques.get(random.nextInt(this.attaques.size()));
+        IAttaque attaque = this.attaques.get(random.nextInt(this.attaques.size()));
+        System.out.println(" avec " + attaque.getNom());
+        return attaque;
     }
 
     public void setAttaques(List<IAttaque> attaques) {

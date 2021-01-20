@@ -19,9 +19,13 @@ public class Personnage extends AbstractCombattant{
      */
     @Override
     public void attaquer(ICombattant adversaire) {
-        System.out.println(this.getNom() + " attaque " + adversaire.getNom());
+        System.out.print(this.getNom() + " attaque " + adversaire.getNom());
         adversaire.defendre(this.classe.getAttaque().lancerAttaque());
-        System.out.println("Il reste à " + adversaire.getNom() + " : " + adversaire.getPointDeVie() + " pdv");
+        if(adversaire.estMort()) {
+            System.out.println(adversaire.getNom() + " est mort !");
+        }else {
+            System.out.println("Il reste à " + adversaire.getNom() + " : " + adversaire.getPointDeVie() + " pdv");
+        }
     }
 
     @Override
