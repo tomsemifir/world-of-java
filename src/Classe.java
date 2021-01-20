@@ -38,4 +38,12 @@ public class Classe {
     public void setAttaques(List<IAttaque> attaques) {
         this.attaques = attaques;
     }
+
+    @Override
+    public String toString() {
+        return "Classe{" +
+                "nom='" + nom + '\'' +
+                ", attaques=" + attaques +
+                '}';
+    }
 }

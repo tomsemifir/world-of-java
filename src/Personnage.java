@@ -23,4 +23,14 @@ public class Personnage extends AbstractCombattant{
         adversaire.defendre(this.classe.getAttaque().lancerAttaque());
         System.out.println("Il reste à " + adversaire.getNom() + " : " + adversaire.getPointDeVie() + " pdv");
     }
+
+    @Override
+    public String toString() {
+        return "Personnage{" +
+                "nom='" + this.getNom() + '\'' +
+                ", degats=" + this.getDegats() +
+                ", pointDeVie=" + this.getPointDeVie() +
+                ", classe=" + classe +
+                '}';
+    }
 }

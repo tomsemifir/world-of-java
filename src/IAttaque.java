@@ -11,4 +11,7 @@ public interface IAttaque {
     // Chance de toucher doit être compris entre 0 et 100 obligatoirement
     public void setChanceToucher(double chanceToucher);
     public void setDegats(int degats);
+    
+    @Override
+    public String toString();
 }

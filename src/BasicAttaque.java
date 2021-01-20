@@ -25,10 +25,7 @@ public class BasicAttaque implements IAttaque{
      */
     public int lancerAttaque() {
         Random random = new Random();
-        // Génère un nombre aléatoire à virgule entre 0 et 100
-        double nbr = random.nextDouble() * 100;
-
-        if(nbr < getChanceToucher()) {
+        if(random.nextDouble() * 100 < getChanceToucher()) {
             return getDegats();
         } else {
             System.out.println("L'attaque a échoué");
@@ -79,5 +76,15 @@ public class BasicAttaque implements IAttaque{
         } else {
             System.out.println("La chance de toucher doit être comprise entre 0 et 100");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "BasicAttaque{" +
+                "nom='" + nom + '\'' +
+                ", description='" + description + '\'' +
+                ", degats=" + degats +
+                ", chanceToucher=" + chanceToucher +
+                '}';
     }
 }
